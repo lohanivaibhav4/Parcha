@@ -1,3 +1,5 @@
+SEE LIVE PREVIEW : https://parcha-note.netlify.app/
+
 Features to be added in next update
 1.Move notes to deleted folder
 2.copy to clipboard
