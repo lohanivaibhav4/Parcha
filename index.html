@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FONT-AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+    <title>Parcha</title>
+</head>
+<body>
+    <nav>
+        <button id="expand-nav"><i class="fa-solid fa-bars"></i></button>
+        <a href="index.html" id="home-btn"><i class="fa-solid fa-house"></i></a>
+        <h1 class="main-title">Parcha</h1>
+        <ul id="nav-btn">
+            <li><a href="#" id="lockedNotes"><i class="fa-solid fa-lock"></i></a></li>
+            <li><a href="#" id="deletedNotes"><i class="fa-solid fa-trash"></i></a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="container" id="container">
+            <!-- <div class="notes">
+                <div class="notes-title-div">
+                    <h2>Title</h2>
+                    <button id="delete-note-btn"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+                <textarea name="" id=""></textarea>
+            </div> -->
+        </div>
+        <button id="add-btn">+</button>
+    </section>
+
+    <div class="create-notes" id="create-notes">
+        <div class="create-notes-title-div">
+            <input type="text" placeholder="Title.." class="create-notes-title" id="create-notes-title">
+        </div>
+        <textarea name="" id="create-notes-text"></textarea>
+        <div class="create-notes-btn">
+            <button id="discard-new"><i class="fa-solid fa-xmark"></i></button>
+            <button id="save-new"><i class="fa-solid fa-floppy-disk"></i></button>
+        </div>
+    </div>
+    
+
+    <script src="index.js"></script>
+</body>
+</html>
+

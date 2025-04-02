@@ -1,0 +1,233 @@
+/* IMPORTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+/*  */
+
+
+body{
+    background-color: #11151c;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ubuntu';
+}
+nav{
+    background-color: #080a0e8e;
+    border-radius: 10%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    color: #70e000;
+    font-size: 1.75em;
+    padding: 0 1.5em;
+    text-align: center;
+    align-items: center;
+}
+h1{
+    font-size: 2em;
+    margin: 0;
+    cursor: pointer;
+}
+#home-btn{
+    text-align: left;
+    color: inherit;
+}
+nav ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: end;
+    gap: 2em;
+}
+nav ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+#expand-nav{
+    display: none;
+}
+
+.container{
+    margin-top: 1em;
+    padding: 1em;
+    min-width: 100%;
+    min-height: 82vh;
+    border: 1px solid #70e0005b;
+    border-radius: 10px;
+    position: relative;
+    display: grid;
+    gap: 1em;
+    grid-auto-rows: 285px;
+    grid-template-columns: repeat(auto-fit,minmax(270px,280px));
+    box-sizing: border-box;
+
+}
+#add-btn{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    border: 5px solid#080a0e8e;
+    background-color: #70e000;
+    font-size: 2.5em;
+}
+#add-btn:hover{
+    border: 5px solid #70e00055;
+    color: #70e000;
+    background-color: #080a0e8e;
+    
+}
+/* NOTES-STYLING */
+
+.notes,.create-notes{
+    display: grid;
+    grid-template: repeat(8,1fr)/repeat(8,1fr);
+    background-color: #080a0e8e;
+    height: 250px;
+    width: 250px;
+    padding: 1em;
+    border-radius: 10px;
+}
+.notes-title-div, .create-notes-title-div{
+    grid-column: 1/9;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: space-between;
+    color: #70e000;
+    border-radius: 10px;
+    background-color: #11151c;
+    margin-bottom: 5px;
+}
+
+h2{
+    display: inline-block;
+    margin: 0;
+    font-weight: 500;
+    font-size: medium;
+    width: 80%;
+    text-align: left;
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+
+#delete-note-btn,.create-notes-btn button,#edit-note-btn,#lock-note-btn,#copy-note-btn{
+    top: 5px;
+    right: 5px;
+    border-radius: 50%;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    color: #70e000;
+    background-color: #080a0e00;
+    border: none;
+    font-size: 0.75em;
+}
+
+.notes label{
+    color: #3d424b;
+    width: 100%;
+} 
+textarea,.notes-text{
+    grid-row: 2/9;
+    grid-column: 1/9;
+    resize: none;
+    border: none;
+    color: white;
+    font-size: 1.25em;
+    background-color: #080a0e00;
+    outline: none;
+    overflow: hidden;
+    font-family: 'Ubuntu';
+    font-size: 0.85em;
+    border-top: 1px solid #70e0006e;
+    padding: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/*  */
+
+.blurred{
+    filter: blur(10px);
+}
+.hidden{
+    display: none;
+}
+
+.create-notes{
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 18%;
+    width: 60%;
+    height: 60%;
+}
+.create-notes textarea{
+    font-size: large;
+}
+.create-notes-title{
+    background-color: #11151c;
+}
+.create-notes-title,.create-notes-btn{
+    border: none;
+    outline: none;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    font-size: x-large;
+    color: #70e000;
+}
+.create-notes-btn{
+    box-sizing: border-box;
+    display: flex;
+    grid-column: 1/9;
+    grid-row: 8/9;
+    width: 100%;
+    justify-content: space-between;
+}
+.create-notes-btn button{
+    width: 2.25em;
+    height: 2.25em;
+    border-radius: 50%;
+    border: 5px solid#080a0e8e;
+    background-color: #70e000;
+    font-size: 1em;
+    color: #11151c;
+}
+
+
+
+
+@media(max-width:480px){
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 88vh;
+    }
+    #nav-btn,#home-btn{
+        display: none;
+    }
+    nav{
+        display: flex;
+        padding: 0 0.5em;
+        padding-right: 1.5em;
+    }
+    h1{
+        width: 100%;
+        text-align: center;
+        font-size: 1.5em;
+    }
+    #expand-nav{
+        display: inline-block;
+        background-color: #080a0e8e;
+        color: #70e000;
+        border: none;
+        font-size: 1em;
+    }
+}
