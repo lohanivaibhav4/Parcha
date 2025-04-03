@@ -202,7 +202,7 @@ function handleClicks(e){
 
 // EDIT_NOTES_EVENT_LISTNERS
 container.addEventListener('click',handleClicks)
-container.addEventListener('touchstart',handleClicks)
+container.addEventListener('pointerdown',handleClicks)
 
 
 //FUNCTION_CALLS
