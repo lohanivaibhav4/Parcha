@@ -114,7 +114,7 @@ h2{
     
 }
 
-#delete-note-btn,.create-notes-btn button,#edit-note-btn,#lock-note-btn,#copy-note-btn{
+.notes-title-div button ,.create-notes-btn button{
     top: 5px;
     right: 5px;
     border-radius: 50%;
@@ -210,13 +210,18 @@ textarea,.notes-text{
         align-items: center;
         height: 88vh;
     }
-    #nav-btn,#home-btn{
+    .notes{
+        width: 85%;
+    }
+    .nav-btn,#home-btn{
         display: none;
     }
     nav{
         display: flex;
         padding: 0 0.5em;
         padding-right: 1.5em;
+        position: relative;
+        z-index: 1;
     }
     h1{
         width: 100%;
@@ -229,5 +234,28 @@ textarea,.notes-text{
         color: #70e000;
         border: none;
         font-size: 1em;
+        cursor: pointer;
+    }
+    .notes-title-div button{
+        font-size: 1.25em;
+    }
+    .notes-title-div{
+        gap: 1em;
+        padding: 0.5em ;
+    }
+    .mobNav{
+        display: flex;
+        box-sizing: border-box;
+        background-color: #080a0e;
+        position: absolute;
+        top: 35px;
+        left: 0;
+        width: 50vw;
+        height: 15vh;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        border-radius: 10px;
+        
     }
 }
