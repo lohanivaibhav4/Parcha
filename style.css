@@ -201,14 +201,12 @@ textarea,.notes-text{
 }
 
 
-
-
 @media(max-width:480px){
     .container{
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 88vh;
+        min-height: 88vh;
     }
     .notes{
         width: 85%;
@@ -216,6 +214,7 @@ textarea,.notes-text{
     .nav-btn,#home-btn{
         display: none;
     }
+   
     nav{
         display: flex;
         padding: 0 0.5em;

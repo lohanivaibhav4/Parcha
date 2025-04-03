@@ -52,9 +52,14 @@ function renderNotes(){
     }
     container.innerHTML = savedNotesHTML
 }
+function toggleMobNav(){
+    navbarBtns.classList.toggle('mobNav')
+    container.classList.toggle('blurred')
+}
 
 
 // EVENT-LISTNERS
+
 
 addBtn.addEventListener('click',()=>{
     createNotesDiv.style.display = "grid"
@@ -77,18 +82,20 @@ lockedNotesBtn.addEventListener('click',()=>{
         addBtn.classList.remove('hidden')
         renderNotes()
     }
+    toggleMobNav()
 })
 
 deletedNotesBtn.addEventListener('click',()=>{
     currentType = 'deleted'
     addBtn.classList.add('hidden')
     renderNotes()
+   toggleMobNav()
 })
 
 expandNavBtn.addEventListener('click',()=>{
-    navbarBtns.classList.toggle('mobNav')
-    container.classList.toggle('blurred')
+    toggleMobNav()
 })
+
 
 //ADD_NEW_NOTES_LISTNERS
 document.getElementById('discard-new').addEventListener('click',()=>{
@@ -117,8 +124,8 @@ document.getElementById('save-new').addEventListener('click',()=>{
     }                        
 })
 
-// EDIT_NOTES_EVENT_LISTNERS
-container.addEventListener('click',(e)=>{
+
+function handleClicks(e){
     const classArray = Array.from(e.target.classList)
     const selectedItem = savedLocal.filter(item=>{
         return (e.target.closest('div').id === item.id)
@@ -191,8 +198,12 @@ container.addEventListener('click',(e)=>{
             
         }
     }
-    
-})
+}
+
+// EDIT_NOTES_EVENT_LISTNERS
+container.addEventListener('click',handleClicks)
+container.addEventListener('touchstart',handleClicks)
+
 
 //FUNCTION_CALLS
 renderNotes()
