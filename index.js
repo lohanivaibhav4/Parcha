@@ -14,6 +14,7 @@ const deletedNotesBtn = document.getElementById('deletedNotes')
 const expandNavBtn = document.getElementById('expand-nav')
 const navbarBtns = document.querySelector('.nav-btn')
 const saveNewBtn =  document.getElementById('save-new')
+const type = document.getElementById('type')
 
 // JS_ELEMENTS
 let currentType = 'default'
@@ -52,9 +53,18 @@ function renderNotes(){
         })
     }
     container.innerHTML = savedNotesHTML
-    lockedNotesBtn.disabled = false
+    
+    if(currentType === 'locked'){
+        type.textContent = "Locked Notes"
+    }
+    else if(currentType === 'deleted'){
+        type.textContent = "Deleted Notes"
+    }
+    else{
+        type.textContent = "Saved Notes"
+    }
     lockedNotesBtn.style.color = '#70e000'
-    deletedNotesBtn.disabled = false
+    
     deletedNotesBtn.style.color = '#70e000'
 
     
@@ -88,7 +98,6 @@ lockedNotesBtn.addEventListener('click',()=>{
         currentType = 'locked'
         addBtn.classList.remove('hidden')
         renderNotes()
-        lockedNotesBtn.disabled = true
         lockedNotesBtn.style.color = 'grey'
     }
 })
@@ -97,7 +106,6 @@ deletedNotesBtn.addEventListener('click',()=>{
     currentType = 'deleted'
     addBtn.classList.add('hidden')
     renderNotes()
-    deletedNotesBtn.disabled = true
     deletedNotesBtn.style.color = 'grey'
 })
 
@@ -143,6 +151,7 @@ function handleClicks(e){
         const deletedItem = selectedItem
         if(deletedItem){
             //IF ALREADY IN DELETED FOLDER, JUST DELETE THE ITEM PERMANENTLY
+            const typeBefore = currentType
           if(currentType === 'deleted'){
             savedLocal.splice(savedLocal.indexOf(deletedItem),1)[0]
             localStorage.setItem(currentType,JSON.stringify(savedLocal))
@@ -158,9 +167,12 @@ function handleClicks(e){
             //REMOVE COPY, EDIT & LOCK OPTIONS FROM DELETED NOTES
     
             //RESETTING_CURRENT_TYPE_TO_DEFAULT
-            currentType = 'default'
+            currentType = typeBefore
           }
           renderNotes()
+          if(currentType==='locked'){
+            lockedNotesBtn.style.color = 'grey'
+          }
           
         }
     }

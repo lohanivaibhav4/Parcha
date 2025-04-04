@@ -49,7 +49,6 @@ nav a{
 }
 
 .container{
-    margin-top: 1em;
     padding: 1em;
     min-width: 100%;
     min-height: 82vh;
@@ -115,6 +114,18 @@ h2{
     text-overflow: ellipsis;
     
 }
+#type{
+    margin: 0;
+    display: inline-block;
+    border: 1px solid #70e0006e;
+    border-radius: 10px;
+    color: #3d424b;
+    padding: 0.25em 2em;
+}
+#type-div{
+    text-align: center;
+    padding: 1em;
+}
 
 .notes-title-div button ,.create-notes-btn button{
     top: 5px;
@@ -176,12 +187,11 @@ textarea,.notes-text{
     width: 4px;
 }
 .create-notes textarea::-webkit-scrollbar-track{
-    background-color: #080a0e;
     margin: 10px 0;
     border-radius: 10px;
 }
 .create-notes textarea::-webkit-scrollbar-thumb{
-    background-color: #70e000;
+    background-color: #70e00040;
     border-radius: 10px;
 }
 
