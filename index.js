@@ -13,6 +13,7 @@ const lockedNotesBtn = document.getElementById('lockedNotes')
 const deletedNotesBtn = document.getElementById('deletedNotes')
 const expandNavBtn = document.getElementById('expand-nav')
 const navbarBtns = document.querySelector('.nav-btn')
+const saveNewBtn =  document.getElementById('save-new')
 
 // JS_ELEMENTS
 let currentType = 'default'
@@ -51,6 +52,12 @@ function renderNotes(){
         })
     }
     container.innerHTML = savedNotesHTML
+    lockedNotesBtn.disabled = false
+    lockedNotesBtn.style.color = '#70e000'
+    deletedNotesBtn.disabled = false
+    deletedNotesBtn.style.color = '#70e000'
+
+    
 }
 function toggleMobNav(){
     navbarBtns.classList.toggle('mobNav')
@@ -81,15 +88,17 @@ lockedNotesBtn.addEventListener('click',()=>{
         currentType = 'locked'
         addBtn.classList.remove('hidden')
         renderNotes()
+        lockedNotesBtn.disabled = true
+        lockedNotesBtn.style.color = 'grey'
     }
-    toggleMobNav()
 })
 
 deletedNotesBtn.addEventListener('click',()=>{
     currentType = 'deleted'
     addBtn.classList.add('hidden')
     renderNotes()
-   toggleMobNav()
+    deletedNotesBtn.disabled = true
+    deletedNotesBtn.style.color = 'grey'
 })
 
 expandNavBtn.addEventListener('click',()=>{
@@ -104,7 +113,7 @@ document.getElementById('discard-new').addEventListener('click',()=>{
     createNotesDiv.style.display = "none"
     container.classList.toggle('blurred')
 })
-document.getElementById('save-new').addEventListener('click',()=>{
+saveNewBtn.addEventListener('click',()=>{
     if(createNotesText.value){
         let newNote = {
             id:crypto.randomUUID(),
@@ -133,22 +142,21 @@ function handleClicks(e){
     if(classArray.includes('delete')){
         const deletedItem = selectedItem
         if(deletedItem){
+            //IF ALREADY IN DELETED FOLDER, JUST DELETE THE ITEM PERMANENTLY
           if(currentType === 'deleted'){
             savedLocal.splice(savedLocal.indexOf(deletedItem),1)[0]
             localStorage.setItem(currentType,JSON.stringify(savedLocal))
           }
-          else{
+          else{ //MOVING DELETED ITEM TO DELETED ARRAY
             const del = savedLocal.splice(savedLocal.indexOf(deletedItem),1)[0]
             localStorage.setItem(currentType,JSON.stringify(savedLocal))
-
-            //MOVING DELETED ITEM TO DELETED ARRAY
             currentType = 'deleted'
             savedLocal = JSON.parse(localStorage.getItem(currentType))
             savedLocal.unshift(del)
             localStorage.setItem(currentType,JSON.stringify(savedLocal))
 
             //REMOVE COPY, EDIT & LOCK OPTIONS FROM DELETED NOTES
-
+    
             //RESETTING_CURRENT_TYPE_TO_DEFAULT
             currentType = 'default'
           }
@@ -191,11 +199,24 @@ function handleClicks(e){
     else if(classArray.includes('edit')){
         const editedItem = selectedItem
         if(editedItem){
+            // saveNewBtn.disabled = true
+            // saveNewBtn.style.backgroundColor = 'grey'
+
             createNotesDiv.style.display = "grid"
             container.classList.add('blurred')
             createNotesTitle.value = editedItem.title
             createNotesText.value = editedItem.text
             
+            // createNotesDiv.addEventListener('keydown',()=>{
+            //     if((editedItem.title != createNotesTitle.value)||(editedItem.text != createNotesText.value)){
+            //         saveNewBtn.disabled = false
+            //         saveNewBtn.style.backgroundColor = '##70e000'
+            //     }
+            //     else{
+            //         saveNewBtn.disabled = true
+            //         saveNewBtn.style.backgroundColor = 'grey'
+            //     }
+            // })
         }
     }
 }

@@ -27,6 +27,8 @@ h1{
     font-size: 2em;
     margin: 0;
     cursor: pointer;
+    text-align: center;
+    padding-bottom: 0.125em;
 }
 #home-btn{
     text-align: left;
@@ -38,7 +40,7 @@ nav ul{
     justify-content: end;
     gap: 2em;
 }
-nav ul li a{
+nav a{
     text-decoration: none;
     color: inherit;
 }
@@ -167,7 +169,22 @@ textarea,.notes-text{
 }
 .create-notes textarea{
     font-size: large;
+    overflow-y: scroll;
+    padding-right: 1em;
 }
+.create-notes textarea::-webkit-scrollbar{
+    width: 4px;
+}
+.create-notes textarea::-webkit-scrollbar-track{
+    background-color: #080a0e;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+.create-notes textarea::-webkit-scrollbar-thumb{
+    background-color: #70e000;
+    border-radius: 10px;
+}
+
 .create-notes-title{
     background-color: #11151c;
 }
@@ -216,18 +233,22 @@ textarea,.notes-text{
     }
    
     nav{
+        justify-content: space-between;
         display: flex;
         padding: 0 0.5em;
-        padding-right: 1.5em;
         position: relative;
         z-index: 1;
     }
-    h1{
+    #h1link{
         width: 100%;
-        text-align: center;
-        font-size: 1.5em;
+        display: block;
+        margin: 0.25em 0;
+    }
+    h1{
+        font-size: 1.5em; 
     }
     #expand-nav{
+        justify-self: left;
         display: inline-block;
         background-color: #080a0e8e;
         color: #70e000;
